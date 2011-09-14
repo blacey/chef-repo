@@ -42,18 +42,19 @@ set['nagios']['cache_dir']  = "/var/cache/nagios3"
 set['nagios']['state_dir']  = "/var/lib/nagios3"
 set['nagios']['run_dir']    = "/var/run/nagios3"
 set['nagios']['docroot']    = "/usr/share/nagios3/htdocs"
+set['nagios']['fqdn']    = "nagios.268media.com"
 
 # for server from source installation
 default['nagios']['server']['url']      = 'http://prdownloads.sourceforge.net/sourceforge/nagios'
 default['nagios']['server']['version']  = '3.2.3'
 default['nagios']['server']['checksum'] = '7ec850a4d1d8d8ee36b06419ac912695e29962641c757cf21301b1befcb23434'
 
-default['nagios']['notifications_enabled']   = 0
+default['nagios']['notifications_enabled']   = 1
 default['nagios']['check_external_commands'] = true
 default['nagios']['default_contact_groups']  = %w(admins)
 default['nagios']['sysadmin_email']          = "root@localhost"
 default['nagios']['sysadmin_sms_email']      = "root@localhost"
-default['nagios']['server_auth_method']      = "openid"
+default['nagios']['server_auth_method']      = "htauth"
 
 # This setting is effectively sets the minimum interval (in seconds) nagios can handle.
 # Other interval settings provided in seconds will calculate their actual from this value, since nagios works in 'time units' rather than allowing definitions everywhere in seconds

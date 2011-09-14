@@ -4,6 +4,7 @@
 
 <VirtualHost *:80>
   DocumentRoot <%= node[:graylog2][:basedir] %>/web/public
+  ServerName      <%= node['graylog2']['fqdn'] %>
   <Directory <%= node[:graylog2][:basedir] %>/web/public>
     Allow from all
     Options -MultiViews

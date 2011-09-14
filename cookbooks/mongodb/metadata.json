@@ -39,7 +39,7 @@
       "choice": [
 
       ],
-      "default": "/var/lib/mongodb",
+      "default": "/mnt/mongodb",
       "type": "string",
       "recipes": [
 

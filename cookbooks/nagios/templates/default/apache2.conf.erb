@@ -1,7 +1,7 @@
 <VirtualHost *:80>
   ServerAdmin     <%= node['nagios']['sysadmin_email'] %>
-  ServerName      <%= node[:fqdn] %>
-  ServerAlias     nagios nagios.<%= node.chef_environment =~ /^_default$/ ? "default" : node.chef_environment%>.<%= @public_domain %>
+  ServerName      <%= node['nagios']['fqdn'] %>
+  ServerAlias     nagios nagios.<%= node.chef_environment =~ /^_default$/ ? "default" : node.chef_environment%>.<%= @public_domain %> <%= node['nagios']['fqdn'] %>
   DocumentRoot    <%= node['nagios']['docroot'] %>
   CustomLog       <%= node['nagios']['log_dir'] %>/apache_access.log combined
   ErrorLog        <%= node['nagios']['log_dir'] %>/apache_error.log
@@ -14,14 +14,14 @@
 
 <% case node['nagios']['server_auth_method'] -%>
 <% when "openid" -%>
-  <Location />
+  <Location /nagios>
     AuthName "Nagios Server"
     AuthOpenIDEnabled On
     AuthOpenIDDBLocation /var/cache/apache2/mod_auth_openid.db
     AuthOpenIDUserProgram /usr/local/bin/mod_auth_openid.rb
   </Location>
 <% else -%>
-  <Location />
+  <Location /nagios>
     AuthName "Nagios Server"
     AuthType Basic
     AuthUserFile "<%= node['nagios']['conf_dir'] %>/htpasswd.users"
