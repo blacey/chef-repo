@@ -4,7 +4,7 @@
   "htpasswd": "hashed_htpassword",
   "openid": "https://www.google.com/accounts/o8/id/",
   "nagios": {
-    "pager": "2297400300@txt.att.net",
-    "email": "bobby.lacey@268generation.com"
+    "pager": "",
+    "email": ""
   }
 }
